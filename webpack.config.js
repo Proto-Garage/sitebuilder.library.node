@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: __dirname + "/lib",
-    filename: "bundle.js",
+    filename: "sitebuilder.library.node.js",
     // filename: "[name].js",
     libraryTarget: "umd",
     library: "sitebuilder.library.node",
@@ -87,7 +87,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: "[name].css",
+      filename: "sitebuilder.library.node.css",
+      // filename: "[name].css",
       chunkFilename: "[id].css"
     })
   ],
