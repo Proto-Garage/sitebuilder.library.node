@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "sitebuilder.library.node",
   "version": "0.0.2",
   "description": "Renders sitebuilder nodes.",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/noahjohn9259/sitebuilder.node.git"
+    "url": "git+ssh://git@github.com/Proto-Garage/sitebuilder.library.node.git"
   },
   "author": "master",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/noahjohn9259/sitebuilder.node/issues"
+    "url": "https://github.com/Proto-Garage/sitebuilder.library.node/issues"
   },
-  "homepage": "https://github.com/noahjohn9259/sitebuilder.node#readme",
+  "homepage": "https://github.com/Proto-Garage/sitebuilder.library.node#readme",
   "dependencies": {
     "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
