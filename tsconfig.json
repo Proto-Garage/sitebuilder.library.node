@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "target": "es5",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "declaration": true,
+    "sourceMap": true,
+    "jsx": "react",
+    "lib": ["dom", "esnext"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "typings/**/*.d.ts"]
+}

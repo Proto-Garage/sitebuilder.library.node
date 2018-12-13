@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+
+# Build
+lib
+*.tgz
+
+# Tests
+coverage
+junit.xml
+
+# Misc
+yarn-error.log
+yarn.lock
