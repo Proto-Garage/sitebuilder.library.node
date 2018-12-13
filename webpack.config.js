@@ -20,24 +20,20 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
 
-  externals: [
-    {
-      react: {
-        root: "React",
-        commonjs2: "react",
-        commonjs: "react",
-        amd: "react"
-      }
+  externals: {
+    react: {
+      root: "react",
+      commonjs2: "react",
+      commonjs: "react",
+      amd: "react"
     },
-    {
-      "react-dom": {
-        root: "ReactDOM",
-        commonjs2: "react-dom",
-        commonjs: "react-dom",
-        amd: "react-dom"
-      }
+    "react-dom": {
+      root: "react-dom",
+      commonjs2: "react-dom",
+      commonjs: "react-dom",
+      amd: "react-dom"
     }
-  ],
+  },
 
   module: {
     rules: [
