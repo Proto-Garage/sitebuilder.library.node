@@ -1,14 +1,12 @@
-// const path = require("path");
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./docs/lib/index.tsx",
   output: {
-    path: __dirname + "/lib",
+    path: __dirname + "./build",
     filename: "bundle.js",
-    // filename: "[name].js",
     libraryTarget: "umd",
-    library: "sitebuilder.library.node",
     umdNamedDefine: true
   },
 
@@ -17,7 +15,14 @@ module.exports = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    alias: {
+      "bootstrap-css": path.join(
+        __dirname,
+        "node_modules/bootstrap/dist/css/bootstrap.css"
+      ),
+      "sitebuilder.library.node": path.resolve("./src")
+    }
   },
 
   externals: [
