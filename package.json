@@ -1,6 +1,6 @@
 {
   "name": "sitebuilder.library.node",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Renders sitebuilder nodes.",
   "main": "lib/sitebuilder.library.node.js",
   "types": "lib/index.d.ts",
