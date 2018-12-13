@@ -25,21 +25,6 @@ module.exports = {
     }
   },
 
-  // externals: {
-  //   react: {
-  //     root: "react",
-  //     commonjs2: "react",
-  //     commonjs: "react",
-  //     amd: "react"
-  //   },
-  //   "react-dom": {
-  //     root: "ReactDOM",
-  //     commonjs2: "react-dom",
-  //     commonjs: "react-dom",
-  //     amd: "react-dom"
-  //   }
-  // },
-
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.

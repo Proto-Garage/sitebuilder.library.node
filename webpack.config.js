@@ -20,11 +20,6 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js", ".json"]
   },
 
-  // externals: {
-  //   react: "react",
-  //   "react-dom": "react-dom"
-  // },
-
   module: {
     rules: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
@@ -83,10 +78,10 @@ module.exports = {
   // assume a corresponding global variable exists and use that instead.
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
-  externals: {
-    react: "React",
-    "react-dom": "ReactDOM"
-  },
+  // externals: {
+  //   react: "react",
+  //   "react-dom": "react-dom"
+  // },
   devServer: {
     // contentBase: path.join(__dirname, "docs"),
     // index: "docs/index.html",
