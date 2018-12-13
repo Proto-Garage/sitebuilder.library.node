@@ -28,7 +28,7 @@ module.exports = {
   externals: [
     {
       react: {
-        root: "React",
+        root: "react",
         commonjs2: "react",
         commonjs: "react",
         amd: "react"
@@ -36,7 +36,7 @@ module.exports = {
     },
     {
       "react-dom": {
-        root: "ReactDOM",
+        root: "react-dom",
         commonjs2: "react-dom",
         commonjs: "react-dom",
         amd: "react-dom"
