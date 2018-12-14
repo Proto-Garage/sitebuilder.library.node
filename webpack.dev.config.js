@@ -1,8 +1,7 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./docs/lib/index.tsx",
+  entry: "./docs/lib/app.tsx",
   output: {
     path: __dirname + "./build",
     filename: "bundle.js",
@@ -50,10 +49,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          process.env.NODE_ENV !== "production"
-            ? "style-loader"
-            : MiniCssExtractPlugin.loader,
-          // "style-loader", // creates style nodes from JS strings
+          "style-loader", // creates style nodes from JS strings
           // {
           //   loader: "css-loader",
           //   options: {}
@@ -69,23 +65,6 @@ module.exports = {
     ]
   },
 
-  plugins: [
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    })
-  ],
-
-  // When importing a module whose path matches one of the following, just
-  // assume a corresponding global variable exists and use that instead.
-  // This is important because it allows us to avoid bundling all of our
-  // dependencies, which allows browsers to cache those libraries between builds.
-  externals: {
-    react: "React",
-    "react-dom": "ReactDOM"
-  },
   devServer: {
     // contentBase: path.join(__dirname, "docs"),
     // index: "docs/index.html",

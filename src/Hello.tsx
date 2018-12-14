@@ -1,14 +1,15 @@
 import * as React from "react";
-import "./hello.scss";
+import { Alert } from "reactstrap";
+
 export interface HelloProps {
   compiler: string;
   framework: string;
 }
 
 const Hello = (props: HelloProps) => (
-  <h1 className="test">
+  <Alert>
     Hello 44ddd2224sss {props.compiler} and {props.framework}!
-  </h1>
+  </Alert>
 );
 
 export default Hello;
