@@ -45,10 +45,10 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          process.env.NODE_ENV !== "production"
-            ? "style-loader"
-            : MiniCssExtractPlugin.loader,
-          // "style-loader", // creates style nodes from JS strings
+          // process.env.NODE_ENV !== "production"
+          //   ? "style-loader"
+          //   : MiniCssExtractPlugin.loader,
+          "style-loader", // creates style nodes from JS strings
           // {
           //   loader: "css-loader",
           //   options: {}

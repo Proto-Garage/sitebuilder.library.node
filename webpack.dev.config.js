@@ -14,14 +14,14 @@ module.exports = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"],
-    alias: {
-      "bootstrap-css": path.join(
-        __dirname,
-        "node_modules/bootstrap/dist/css/bootstrap.css"
-      ),
-      "sitebuilder.library.node": path.resolve("./src")
-    }
+    extensions: [".ts", ".tsx", ".js", ".json"]
+    // alias: {
+    //   "bootstrap-css": path.join(
+    //     __dirname,
+    //     "node_modules/bootstrap/dist/css/bootstrap.css"
+    //   ),
+    //   "sitebuilder.library.node": path.resolve("./src")
+    // }
   },
 
   module: {

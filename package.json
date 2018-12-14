@@ -2,12 +2,13 @@
   "name": "sitebuilder.library.node",
   "version": "0.0.16",
   "description": "Renders sitebuilder nodes.",
-  "main": "lib/sitebuilder.library.node.js",
+  "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "analyze": "npm run build && source-map-explorer lib/sitebuilder.library.node.*",
     "start": "webpack-dev-server --hot --inline --profile --colors --config ./webpack.dev.config.js --watch --mode development",
     "prebuild": "rimraf lib && tsc --project tsconfig.json",
-    "build": "NODE_ENV=production webpack --config webpack.config.js --mode production",
+    "build": "NODE_ENV=production webpack --config webpack.config.js --mode production && copyfiles --up 1 ./src/**/*.html ./src/**/*.jpg ./src/**/*.png ./src/**/*.svg ./src/**/*.scss lib/",
     "prepare": "npm run build"
   },
   "repository": {
@@ -24,18 +25,22 @@
     "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
     "react": "^16.6.3",
+    "react-beautiful-dnd": "^10.0.3",
     "react-dom": "^16.6.3",
+    "react-icons": "^3.2.2",
+    "react-owl-carousel2": "^0.3.0",
     "reactstrap": "^6.5.0",
+    "sitebuilder.client": "git://github.com/Proto-Garage/sitebuilder.client.git#v0.1.46",
+    "source-map-explorer": "^1.6.0",
     "styled-components": "^4.1.2"
   },
-  "peerDependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
-  },
   "devDependencies": {
+    "@types/classnames": "^2.2.6",
     "@types/reactstrap": "^6.4.3",
+    "@types/styled-components": "^4.1.4",
     "awesome-typescript-loader": "^5.2.1",
     "bootstrap": "^4.1.3",
+    "copyfiles": "^2.1.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.0.0",
     "file-loader": "^2.0.0",
