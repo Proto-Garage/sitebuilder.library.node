@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./docs/lib/app.tsx",
+  entry: "./docs/lib/index.tsx",
   output: {
     path: __dirname + "./build",
     filename: "bundle.js",

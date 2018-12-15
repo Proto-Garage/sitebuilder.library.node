@@ -5,10 +5,13 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "analyze": "npm run build && source-map-explorer lib/sitebuilder.library.node.*",
+    "analyze": "npm run build && source-map-explorer lib/SitebuilderLibraryNode.*",
     "start": "webpack-dev-server --hot --inline --profile --colors --config ./webpack.dev.config.js --watch --mode development",
-    "prebuild": "rimraf lib && tsc --project tsconfig.json",
-    "build": "NODE_ENV=production webpack --config webpack.config.js --mode production && copyfiles --up 1 ./src/**/*.html ./src/**/*.jpg ./src/**/*.png ./src/**/*.svg ./src/**/*.scss lib/",
+    "clean": "rimraf lib",
+    "prebuild": "npm run clean",
+    "build": "npm run build-webpack && npm run copyfiles",
+    "build-webpack": "NODE_ENV=production webpack --config webpack.config.js --mode production",
+    "copyfiles": "copyfiles --up 1 ./src/**/*.html ./src/**/*.jpg ./src/**/*.png ./src/**/*.svg ./src/**/*.scss lib/",
     "prepare": "npm run build"
   },
   "repository": {
@@ -21,7 +24,12 @@
     "url": "https://github.com/Proto-Garage/sitebuilder.library.node/issues"
   },
   "homepage": "https://github.com/Proto-Garage/sitebuilder.library.node#readme",
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
     "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
     "react": "^16.6.3",
@@ -32,9 +40,7 @@
     "reactstrap": "^6.5.0",
     "sitebuilder.client": "git://github.com/Proto-Garage/sitebuilder.client.git#v0.1.46",
     "source-map-explorer": "^1.6.0",
-    "styled-components": "^4.1.2"
-  },
-  "devDependencies": {
+    "styled-components": "^4.1.2",
     "@types/classnames": "^2.2.6",
     "@types/reactstrap": "^6.4.3",
     "@types/styled-components": "^4.1.4",

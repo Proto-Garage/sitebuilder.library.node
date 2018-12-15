@@ -1,15 +1,44 @@
-// const path = require("path");
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ROOT = path.resolve(__dirname, "src");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  context: ROOT,
+  entry: "./index.tsx",
   output: {
     path: __dirname + "/lib",
-    filename: "sitebuilder.library.node.js",
+    filename: "SitebuilderLibraryNode.js",
     // filename: "[name].js",
     libraryTarget: "umd",
-    library: "sitebuilder.library.node",
+    library: "SitebuilderLibraryNode",
     umdNamedDefine: true
+  },
+
+  externals: {
+    react: {
+      root: "React",
+      commonjs2: "react",
+      commonjs: "react",
+      amd: "react"
+    },
+    "react-dom": {
+      root: "ReactDOM",
+      commonjs2: "react-dom",
+      commonjs: "react-dom",
+      amd: "react-dom"
+    },
+    styled: {
+      root: "styled",
+      commonjs2: "styled-components",
+      commonjs: "styled-components",
+      amd: "styled-components"
+    },
+    "react-icons": {
+      root: "react-icons",
+      commonjs2: "react-icons",
+      commonjs: "react-icons",
+      amd: "react-icons"
+    }
   },
 
   // Enable sourcemaps for debugging webpack's output.
@@ -17,30 +46,53 @@ module.exports = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js"],
+    modules: [ROOT, "node_modules"]
   },
 
   module: {
     rules: [
-      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
+      /****************
+       * PRE-LOADERS
+       *****************/
       {
         enforce: "pre",
-        test: /\.ts$/,
+        test: /\.tsx$/,
+        use: "source-map-loader"
+      },
+      {
+        enforce: "pre",
+        test: /\.tsx$/,
         exclude: /node_modules/,
         use: "tslint-loader"
       },
+
+      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+      {
+        test: /\.tsx$/,
+        exclude: [/node_modules/],
+        use: "awesome-typescript-loader"
+      },
+      // {
+      //   enforce: "pre",
+      //   test: /\.ts$/,
+      //   exclude: /node_modules/,
+      //   use: "tslint-loader"
+      // },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
           {
             loader: "file-loader",
-            options: {}
+            options: {
+              limit: 10000,
+              name: "assets/media/[name].[hash:8].[ext]"
+            }
           }
         ]
       },
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      // { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
 
       {
         test: /\.scss$/,

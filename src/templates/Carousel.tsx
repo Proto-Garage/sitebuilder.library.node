@@ -1,38 +1,95 @@
 import * as React from "react";
-import { CarouselNode, CarouselItemNodeAttributes } from "sitebuilder.client";
-import OwlCarousel from "react-owl-carousel2";
+import { CarouselNode, Node } from "sitebuilder.client";
+import { OwlCarousel } from "react-owl-carousel2";
+import { FiSettings } from "react-icons/fi";
+import { Button } from "reactstrap";
+import styled from "styled-components";
 
 interface OwnProps {
-  node: CarouselNode | null;
-  boxed: false;
+  node: CarouselNode;
 }
 
-export default class Carousel extends React.Component<OwnProps, any> {
-  static defaultProps = {
-    boxed: false
-  };
+interface IState {
+  isOpen: boolean;
+}
+
+export default class Carousel extends React.Component<OwnProps, IState> {
+  constructor(props: OwnProps) {
+    super(props);
+    this.state = {
+      isOpen: false
+    };
+  }
   public render() {
-    const { node } = this.props;
-    if (!node || !node.attributes) return;
-    const slides = node.attributes.items.map(
-      (item: CarouselItemNodeAttributes, idx: number) => (
-        <img key={idx} src={item.src} alt={item.altText} />
-      )
-    );
+    const {
+      node,
+      node: {
+        attributes: { items }
+      }
+    } = this.props;
+    console.log(items);
     return (
-      <OwlCarousel
-        ref={node.id}
-        options={{
-          items: 1,
-          nav: false,
-          dots: true,
-          rewind: true,
-          autoplay: true,
-          ...node.attributes.options
-        }}
-      >
-        {slides}
-      </OwlCarousel>
+      <Wrapper>
+        <OwlCarousel
+          ref="car"
+          options={{
+            items: 1,
+            nav: false,
+            dots: true,
+            rewind: true,
+            autoplay: true
+          }}
+          style={{ width: "1170px" }}
+        >
+          {items.map((item, idx) => (
+            <img key={idx} src={item.src} />
+          ))}
+        </OwlCarousel>
+        <div className="overlay">
+          <StyledButton color="transparent" onClick={this.handleOpen}>
+            Edit Carousel &nbsp;
+            <FiSettings />
+          </StyledButton>
+        </div>
+      </Wrapper>
     );
   }
+
+  handleOpen = () => {
+    this.setState({ isOpen: true });
+  }
+  handleClose = () => {
+    this.setState({ isOpen: false });
+  }
 }
+
+const StyledButton = styled(Button)`
+  display: flex;
+  align-items: center;
+`;
+
+const Wrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+  min-height: 250px;
+  border: 1px dashed #ddd;
+  background-color: #fff;
+  .overlay {
+    position: absolute;
+    top: 40% !important;
+    left: 48% !important;
+    width: 100%;
+    height: 100%;
+    background: rgba(64, 119, 223, 0.7);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &:hover {
+    .overlay {
+      opacity: 1;
+    }
+  }
+`;
