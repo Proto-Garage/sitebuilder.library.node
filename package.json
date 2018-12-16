@@ -2,7 +2,7 @@
   "name": "sitebuilder.library.node",
   "version": "0.0.18",
   "description": "Renders sitebuilder nodes.",
-  "main": "lib/index.js",
+  "main": "lib/SitebuilderLibraryNode.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "analyze": "npm run build-webpack && source-map-explorer lib/SitebuilderLibraryNode.*",
