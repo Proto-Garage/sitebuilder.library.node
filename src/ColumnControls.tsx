@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { FiSettings, FiMove, FiTrash } from "react-icons/fi";
+import { Icon } from "@blueprintjs/core";
 import { Button } from "reactstrap";
 
 interface IProps {
@@ -15,17 +15,17 @@ const ColumnControls: React.SFC<IProps> = props => {
         <ul className="list-unstyled">
           <li className="list-inline-item">
             <Button color="primary">
-              <FiMove />
+              <Icon icon="move" />
             </Button>
           </li>
           <li className="list-inline-item">
             <Button color="primary">
-              <FiSettings />
+              <Icon icon="cog" />
             </Button>
           </li>
           <li className="list-inline-item">
             <Button color="primary">
-              <FiTrash />
+              <Icon icon="trash" />
             </Button>
           </li>
         </ul>

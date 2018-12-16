@@ -1,9 +1,9 @@
 import * as React from "react";
 import { CarouselNode, Node } from "sitebuilder.client";
 import { OwlCarousel } from "react-owl-carousel2";
-import { FiSettings } from "react-icons/fi";
 import { Button } from "reactstrap";
 import styled from "styled-components";
+import { Icon } from "@blueprintjs/core";
 
 interface OwnProps {
   node: CarouselNode;
@@ -27,7 +27,6 @@ export default class Carousel extends React.Component<OwnProps, IState> {
         attributes: { items }
       }
     } = this.props;
-    console.log(items);
     return (
       <Wrapper>
         <OwlCarousel
@@ -48,7 +47,7 @@ export default class Carousel extends React.Component<OwnProps, IState> {
         <div className="overlay">
           <StyledButton color="transparent" onClick={this.handleOpen}>
             Edit Carousel &nbsp;
-            <FiSettings />
+            <Icon icon="cog" />
           </StyledButton>
         </div>
       </Wrapper>

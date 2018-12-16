@@ -16,13 +16,13 @@ module.exports = {
 
   externals: {
     react: {
-      root: "React",
+      root: "react",
       commonjs2: "react",
       commonjs: "react",
       amd: "react"
     },
     "react-dom": {
-      root: "ReactDOM",
+      root: "react-dom",
       commonjs2: "react-dom",
       commonjs: "react-dom",
       amd: "react-dom"
@@ -33,11 +33,59 @@ module.exports = {
       commonjs: "styled-components",
       amd: "styled-components"
     },
-    "react-icons": {
-      root: "react-icons",
-      commonjs2: "react-icons",
-      commonjs: "react-icons",
-      amd: "react-icons"
+    classnames: {
+      root: "classnames",
+      commonjs2: "classnames",
+      commonjs: "classnames",
+      amd: "classnames"
+    },
+    reactstrap: {
+      root: "reactstrap",
+      commonjs2: "reactstrap",
+      commonjs: "reactstrap",
+      amd: "reactstrap"
+    },
+    "react-beautiful-dnd": {
+      root: "react-beautiful-dnd",
+      commonjs2: "react-beautiful-dnd",
+      commonjs: "react-beautiful-dnd",
+      amd: "react-beautiful-dnd"
+    },
+    "react-owl-carousel2": {
+      root: "react-owl-carousel2",
+      commonjs2: "react-owl-carousel2",
+      commonjs: "react-owl-carousel2",
+      amd: "react-owl-carousel2"
+    },
+    "sitebulder.client": {
+      root: "sitebulder.client",
+      commonjs2: "sitebulder.client",
+      commonjs: "sitebulder.client",
+      amd: "sitebulder.client"
+    },
+    "styled-components": {
+      root: "styled-components",
+      commonjs2: "styled-components",
+      commonjs: "styled-components",
+      amd: "styled-components"
+    },
+    bootstrap: {
+      root: "bootstrap",
+      commonjs2: "bootstrap",
+      commonjs: "bootstrap",
+      amd: "bootstrap"
+    },
+    "@blueprintjs/core": {
+      root: "@blueprintjs/core",
+      commonjs2: "@blueprintjs/core",
+      commonjs: "@blueprintjs/core",
+      amd: "@blueprintjs/core"
+    },
+    "@blueprintjs/icons": {
+      root: "@blueprintjs/icons",
+      commonjs2: "@blueprintjs/icons",
+      commonjs: "@blueprintjs/icons",
+      amd: "@blueprintjs/icons"
     }
   },
 
@@ -46,7 +94,7 @@ module.exports = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".mjs", ".ts", ".tsx", ".js"],
     modules: [ROOT, "node_modules"]
   },
 
@@ -69,18 +117,13 @@ module.exports = {
 
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       {
-        test: /\.tsx$/,
+        // test: /\.(ts|js)x?$/,
+        test: /\.(js|mjs|jsx|ts|tsx)$/,
         exclude: [/node_modules/],
         use: "awesome-typescript-loader"
       },
-      // {
-      //   enforce: "pre",
-      //   test: /\.ts$/,
-      //   exclude: /node_modules/,
-      //   use: "tslint-loader"
-      // },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         use: [
           {
             loader: "file-loader",
@@ -91,26 +134,21 @@ module.exports = {
           }
         ]
       },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      // { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
-
       {
         test: /\.scss$/,
         use: [
-          // process.env.NODE_ENV !== "production"
-          //   ? "style-loader"
-          //   : MiniCssExtractPlugin.loader,
-          "style-loader", // creates style nodes from JS strings
-          // {
-          //   loader: "css-loader",
-          //   options: {}
-          // },
-          // {
-          //   loader: "sass-loader",
-          //   options: {}
-          // }
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+          process.env.NODE_ENV !== "production"
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
+          // "style-loader", // creates style nodes from JS strings
+          {
+            loader: "css-loader",
+            options: {}
+          },
+          {
+            loader: "sass-loader",
+            options: {}
+          }
         ]
       }
     ]
@@ -142,5 +180,6 @@ module.exports = {
     open: true,
     // inline: true,
     progress: true
-  }
+  },
+  mode: "production"
 };

@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 // import Marquee from "react-marquee";
-import { FaBullhorn } from "react-icons/fa";
+import { Icon } from "@blueprintjs/core";
 
 export interface IProps {
   children: any;
@@ -11,7 +11,7 @@ export function TextScroller(props: IProps) {
   return (
     <Wrapper className="d-flex align-items-center">
       <div className="mr-2">
-        <FaBullhorn />
+        <Icon icon="notifications" />
       </div>
       <div className="marquee d-flex align-items-center">
         <div className="inner">{props.children}</div>
